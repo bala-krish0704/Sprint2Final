@@ -8,6 +8,7 @@ import logo from '../../assets/circles.png';
 import useStyles from './styles';
 import { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import {useNavigate} from 'react'
 
 import RegLogService from '../../Service/RegLogService';
 
@@ -30,11 +31,23 @@ const Navbar = ({ totalItems }) => {
   const [lpassword, lsetPassword] = useState('');
   const [lvalidated, lsetValidated] = useState(false);
 
+  //Login Modal Instances
+  const [Ashow, AsetShow] = useState(false);
+  const [Aemail, AsetEmail] = useState('');
+  const [Apassword, AsetPassword] = useState('');
+  const [Avalidated, AsetValidated] = useState(false);
+
+  //Sign-up model
   const reghandleClose = () => setShow(false);
   const reghandleShow = () => setShow(true);
 
+  //sign-in modal
   const loghandShow = () => lsetShow(true);
   const loghandClose = () => lsetShow(false)
+  
+  //Admin Modal
+  const AhandShow = () => AsetShow(true);
+  const AhandClose = () => AsetShow(false)
 
   //   if (localStorage.getItem('user_email') !== null) {
   //     alert("User Already Logged In");
@@ -42,6 +55,8 @@ const Navbar = ({ totalItems }) => {
   // } else {
   //     console.log(`Email address not found`);
   // }
+
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("admin_id") !== null);
 
   const handleSubmit = (event) => {
     let reqBody = {};
@@ -52,7 +67,7 @@ const Navbar = ({ totalItems }) => {
     } else {
       reqBody = {
         readerName: name,
-        readerEmail: email,
+        readerEmail: email.toLowerCase(),
         readerMobileNo: mobileNo,
         readerPassword: password
       }
@@ -68,6 +83,7 @@ const Navbar = ({ totalItems }) => {
     }
     setValidated(true);
   };
+
   const loghandleSubmit = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -80,10 +96,29 @@ const Navbar = ({ totalItems }) => {
       localStorage.setItem('user_name', "Shiva");
 
       let log = localStorage.getItem('user_name');
-      console.log(`Email: ${lemail}, Password: ${lpassword}`);
+      // console.log(`Email: ${lemail}, Password: ${lpassword}`);
       alert(`Logged In Successfully ${log}`);
     }
     lsetValidated(true);
+  };
+
+  const AhandleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.stopPropagation();
+    } else {
+
+      localStorage.setItem('admin_email', Aemail.toString());
+      localStorage.setItem('admin_id', 10004);
+      localStorage.setItem('admin_name', "Admin");
+
+      let log = localStorage.getItem('admin_email');
+      // let alog = localStorage.getItem("admin_name");
+      // console.log(`Email: ${Aemail}, Password: ${Apassword}`);
+      alert(`Logged In As Admin :${log}`);
+    }
+    AsetValidated(true);
   };
 
   function gotoLogin() {
@@ -100,9 +135,10 @@ const Navbar = ({ totalItems }) => {
     localStorage.removeItem('user_name');
     localStorage.removeItem('user_id');
     localStorage.removeItem('user_email');
+    localStorage.removeItem('admin_email');
+    localStorage.removeItem('admin_name');
+    localStorage.removeItem('admin_id');
   }
-
-
   return (
     <div>
       <AppBar position="fixed" className={classes.appBar} color="inherit">
@@ -246,6 +282,7 @@ const Navbar = ({ totalItems }) => {
               </IconButton>
             </div>
           )}
+           {isLoggedIn && (
           <DropdownButton
             variant="contained"
             title={<AccountCircle fontSize="large" />}
@@ -257,13 +294,66 @@ const Navbar = ({ totalItems }) => {
             <Dropdown.Divider />
             <Dropdown.Item onClick={handleLogout} style={{ fontSize: "1.5em" }}><ExitToApp fontSize="medium" />  Logout</Dropdown.Item>
           </DropdownButton>
+           )}
 
           <Button
-            className="btn btn-outline-light text-dark btn-sm ml-auto"
+            className="btn btn-outline-light text-dark btn-md ml-auto"
             variant="primary"
             onClick={reghandleShow}>
             Sign-Up
           </Button>
+          <Button
+            className="btn btn-outline-light text-dark btn-md ml-auto"
+            variant="primary"
+            onClick={AhandShow}
+            >
+            Admin
+          </Button>
+          <div className={classes.Modal}>
+            <Modal show={Ashow} onHide={AhandClose} className="modal fade mt-5">
+
+              <Modal.Header closeButton>
+                <Modal.Title>Admin Login</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Form noValidate validated={Avalidated} onSubmit={AhandleSubmit}>
+
+                  <Form.Group className="mb-3" controlId="email">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control
+                      type="email"
+                      placeholder="Enter email"
+                      value={Aemail}
+                      onChange={(e) => AsetEmail(e.target.value)}
+                      required
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Please provide a valid email address.
+                    </Form.Control.Feedback>
+                  </Form.Group>
+
+                  <Form.Group className="mb-3" controlId="password">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      type="password"
+                      placeholder="Password"
+                      value={Apassword}
+                      onChange={(e) => AsetPassword(e.target.value)}
+                      minLength="8"
+                      required
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Password must be at least 8 characters.
+                    </Form.Control.Feedback>
+                  </Form.Group>
+
+                  <Button className='btn btn-danger shadow btn-md btn-block' color="secondary" type="submit">
+                    Login as Admin
+                  </Button>
+                </Form>
+              </Modal.Body>
+            </Modal>
+          </div>
         </Toolbar>
       </AppBar>
     </div>

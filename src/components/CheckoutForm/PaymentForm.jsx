@@ -49,9 +49,6 @@ const PaymentForm = ({ checkoutToken, nextStep, backStep, shippingData, onCaptur
           <form onSubmit={(e) => handleSubmit(e, elements, stripe)}>
             <CardElement />
             <br /> <br />
-            <div style={{display: 'flex', justifyContent: 'space-between'}}>
-              <button variant="outlined" onClick={backStep}>Back</button>
-            </div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <Button variant="outlined" onClick={backStep}>Back</Button>
               <Button type="submit" variant="contained" disabled={!stripe} style={{ backgroundColor: '#1C2331', color: '#FFFF' }} >

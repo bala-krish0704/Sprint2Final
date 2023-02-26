@@ -20,34 +20,28 @@ function OrderComponent() {
 
     return (
         <div>
-
-            <div style={{ width: "200%" }} className="">
-                <h1 style={{ paddingTop: "5%", textAlign: 'Left' }}> <br></br>&nbsp;ORDER LIST</h1>
-                <table class="table table-striped table-inverse table-responsive">
+            <div style={{paddingRight: "10%"}}>
+                <h1 style={{ paddingTop: "5%", textAlign: 'center', marginTop: "100px"}}>List of Orders</h1>
+                <table class="table table-striped">
                     <thead class="thead-inverse">
                         <tr>
-                            <th>Order Id</th>
-                            <th>Book Id</th>
-                            <th>Quantity</th>
-                            <th>Total Cost</th>
-                            <th>Reader Id</th>
-                            <th>Seller Id</th>
+                            <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Order Id</th>
+                            <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Book Id</th>
+                            <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Quantity</th>
+                            <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Total Cost</th>
+                            <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Reader Id</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            orders.map(
-                                order =>
-                                    <tr key={order.orderid}>
-                                        <td>{order.orderId}</td>
-                                        <td>{order.bookId}</td>
-                                        <td>{order.quantity}</td>
-                                        <td>{order.totalcost}</td>
-                                        <td>{order.readerId}</td>
-                                        <td>{order.sellerId}</td>
-                                    </tr>
-                            )
-                        }
+                        { orders.map(order =>
+                            <tr key={order.orderid}>
+                                <td>{order.orderId} </td>
+                                <td>{order.bookId}  </td>
+                                <td>{order.quantity} </td>
+                                <td>{order.totalcost}</td>
+                                <td>{order.readerId} </td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>
@@ -58,3 +52,4 @@ function OrderComponent() {
 }
 
 export default OrderComponent;
+

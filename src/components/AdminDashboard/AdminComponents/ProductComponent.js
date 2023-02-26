@@ -21,22 +21,19 @@ function ProductComponent() {
 
     return (
         <div>
-            <div style={{ width: "190%" }} className="">
-
-                <h1 style={{ paddingTop: "5%", textAlign: 'Left' }}> &nbsp;BOOK LIST</h1>
-                <table className="table table-striped table-inverse table-resposive">
-                    <thead className="thead-inverse">
+            <div style={{paddingRight: "10%"}}>
+                <h1 style={{ paddingTop: "5%", textAlign: 'center', marginTop: "100px"}}>List of Books</h1>
+                <table className="table table-striped" >
+                    <thead>
                         <tr>
-                            <th>Book Id</th>
-                            <th>Book Name</th>
-                            <th>Author Name</th>
-                            <th>ISBN Number</th>
-                            <th>Category</th> 
-                            <th>Author</th>
-                            <th>Quantity </th>
-                            <th>price</th>
-                            <th>published On</th>
-                            <th>Publisher</th>
+                            <th scope="col">Id</th>
+                            <th scope="col" className="col-sm-4" style={{textOverflow: "ellipsis"}}>Book Name</th>
+                            <th scope="col" className="col-sm-4" style={{textOverflow: "ellipsis"}}>Author Name</th>
+                            <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>ISBN Number</th>
+                            <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Category</th> 
+                            <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Author</th>
+                            <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Quantity </th>
+                            <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>price</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,7 +41,6 @@ function ProductComponent() {
                             books.map(
                                 books =>
                                     <tr key={books.bookid}>
-
                                         <td>{books.bookId}</td>
                                         <td>{books.bookName}</td>
                                         <td>{books.bookAuthorName}</td>
@@ -53,9 +49,6 @@ function ProductComponent() {
                                         <td>{books.bookAuthorName}</td>
                                         <td>{books.bookQuantity}</td>
                                         <td>{books.bookPrice}</td>
-                                        <td>{books.bookPubYear}</td>
-                                        <td>{books.bookpubName}</td>
-
                                     </tr>
                             )
                         }

@@ -11,13 +11,12 @@ function AdminDashboard() {
     return (
         <>
             <Router>
-                    <Route exact path='/' element={<Home />} />
-                    <Switch>
-                    <Route exact path='/dashboard/Products' element={<ProductPage />} />
-                    <Route exact path='/dashboard/Orders' element={<OrderPage />} />
-                    <Route exact path='/dashboard/Users' element={<UserPage />} />
-                    <Route exact path='/dashboard/Seller' element={<SellerPage />} />
-                    </Switch>
+                    <Route path='/dashboard' element={<Home />} />
+                    <Route path='/products' element={<ProductPage />} />
+                    <Route path='/orders' element={<OrderPage />} />
+                    <Route path='/users' element={<UserPage />} />
+                    <Route path='/seller' element={<SellerPage />} />
+
             </Router>
         </>
 

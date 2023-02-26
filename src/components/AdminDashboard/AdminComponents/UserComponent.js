@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import UserService from '../../../Services/UserService';
+import Sidebar from './Sidebar/Sidebar';
 
 export function UserComponent() {
 
@@ -21,16 +22,16 @@ export function UserComponent() {
 
     return (
         <div>
-            <div style={{ width: "200%" }} className="">
+            <div style={{ width: "200%" }} className="mt-5">
 
-                <h1 style={{ paddingTop: "5%", textAlign: 'center' }}>Reader List</h1>
-                <table class="table table-striped table-inverse">
+                <h1 style={{ paddingTop: "5%", textAlign: 'center' }}>Readers List</h1>
+                <table class="table table-striped table-dark">
                     <thead class="thead-inverse">
                         <tr>
-                            <th>Reader Id</th>
-                            <th>Reader Name</th>
-                            <th>Reader Email Id</th>
-                            <th>Reader Mobile No</th>
+                            <th scope='col'>Reader Id</th>
+                            <th scope='col'>Reader Name</th>
+                            <th scope='col'>Reader Email Id</th>
+                            <th scope='col'>Reader Mobile No</th>
                         </tr>
                     </thead>
                     <tbody>
