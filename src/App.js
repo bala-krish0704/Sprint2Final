@@ -96,7 +96,12 @@ const App = () => {
     }
   };
   useEffect(() => {
-    localStorage.removeItem("user_id");
+    localStorage.removeItem('user_name');
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('user_email');
+    localStorage.removeItem('admin_email');
+    localStorage.removeItem('admin_name');
+    localStorage.removeItem('admin_id');
     fetchProducts();
     fetchCart();
   }, []);

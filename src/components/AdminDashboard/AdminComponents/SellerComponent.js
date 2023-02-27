@@ -23,8 +23,8 @@ export function SellerComponent() {
             <div style={{ width: "200%" }} className="">
 
                 <h1 style={{ paddingTop: "5%", textAlign: 'center' }}>Seller List</h1>
-                <table class="table table-striped table-inverse">
-                    <thead class="thead-inverse">
+                <table className="table table-striped table-inverse">
+                    <thead className="thead-inverse">
                         <tr>
                             <th>Seller Id</th>
                             <th>Seller Name</th>

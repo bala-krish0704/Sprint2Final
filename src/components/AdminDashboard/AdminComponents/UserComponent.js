@@ -25,8 +25,8 @@ export function UserComponent() {
             <div style={{ width: "200%" }} className="mt-5">
 
                 <h1 style={{ paddingTop: "5%", textAlign: 'center' }}>Readers List</h1>
-                <table class="table table-striped table-dark">
-                    <thead class="thead-inverse">
+                <table className="table table-striped table-dark">
+                    <thead className="thead-inverse">
                         <tr>
                             <th scope='col'>Reader Id</th>
                             <th scope='col'>Reader Name</th>

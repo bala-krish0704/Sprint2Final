@@ -8,8 +8,6 @@ import logo from '../../assets/circles.png';
 import useStyles from './styles';
 import { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-import {useNavigate} from 'react'
-
 import RegLogService from '../../Service/RegLogService';
 
 const Navbar = ({ totalItems }) => {
@@ -44,17 +42,26 @@ const Navbar = ({ totalItems }) => {
   //sign-in modal
   const loghandShow = () => lsetShow(true);
   const loghandClose = () => lsetShow(false)
-  
+
   //Admin Modal
   const AhandShow = () => AsetShow(true);
   const AhandClose = () => AsetShow(false)
 
+  //Loggin CHek
+  let isLoggedIn =() =>{
+    let ulog = localStorage.getItem('user_email');
+    let alog = localStorage.getItem('admin_email');
+    if(alog !==null && ulog!==null){
+      return true;
+    } else {
+      return false;
+    }
+  }
 
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("admin_id") !== null);
 
   // boolean dat = 
   const [BtnVisible, setBtnVisible] = useState(true);
-  
+
   const handleSubmit = (event) => {
     let reqBody = {};
     event.preventDefault();
@@ -92,7 +99,7 @@ const Navbar = ({ totalItems }) => {
       localStorage.setItem('user_id', 12345);
       localStorage.setItem('user_name', "Shiva");
 
-      let log = localStorage.getItem('user_name');
+      let log = localStorage.getItem('user_email');
       // console.log(`Email: ${lemail}, Password: ${lpassword}`);
       alert(`Logged In Successfully ${log}`);
     }
@@ -135,13 +142,14 @@ const Navbar = ({ totalItems }) => {
     localStorage.removeItem('admin_name');
     localStorage.removeItem('admin_id');
   }
+
   return (
     <div>
       <AppBar position="fixed" className={classes.appBar} color="inherit">
         <Toolbar>
           <Typography component={Link} to="/" variant="h5" className={classes.title} color="inherit">
             <img src={logo} alt="Book Store App" height="50px" className={classes.image} />
-            <strong >BooK-BookYe</strong>
+            <strong >BOOK-A-BOOK</strong>
           </Typography>
 
           <div className={classes.Modal}>
@@ -278,32 +286,34 @@ const Navbar = ({ totalItems }) => {
               </IconButton>
             </div>
           )}
-          
-          {location.pathname === '/cart' &&(<DropdownButton
+
+          {(location.pathname === '/cart'|| location.pathname === '/products' ||
+          location.pathname === '/orders' || location.pathname === '/users' ||
+          location.pathname === '/checkout')&& (<DropdownButton
             variant="contained"
             title={<AccountCircle fontSize="large" />}
             className={classes.dropdown}
             color="inherit"
           >
             {/* <Dropdown.Item as={Link} to="/profile" style={{ fontSize: "1.5em" }}><AccountCircleSharp /> My Profile</Dropdown.Item> */}
-            <Dropdown.Item as={Link} to="/products"  style={{ fontSize: "1.5em", marginBottom: '5px' }}><Dashboard /> My Dashboard</Dropdown.Item>
+            <Dropdown.Item as={Link} to="/products" style={{ fontSize: "1.5em", marginBottom: '5px' }}><Dashboard /> My Dashboard</Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item onClick={handleLogout} style={{ fontSize: "1.5em" }} ><ExitToApp fontSize="medium" />Logout</Dropdown.Item>
+            <Dropdown.Item onClick={handleLogout} as={Link} to="/" style={{ fontSize: "1.5em" }} ><ExitToApp fontSize="medium" />Logout</Dropdown.Item>
           </DropdownButton>
           )}
 
-          {location.pathname === '/' && (<Button
+          {(location.pathname === '/'&& isLoggedIn) && (<Button
             className="btn btn-outline-light text-dark btn-md ml-auto"
             variant="primary"
             onClick={reghandleShow}>
             Sign-Up
           </Button>
           )}
-          {location.pathname === '/' && (<Button
+          {(location.pathname === '/'&& isLoggedIn)&&(<Button
             className="btn btn-outline-light text-dark btn-md ml-auto"
             variant="primary"
             onClick={AhandShow}
-            >
+          >
             Admin
           </Button>
           )}

@@ -19,7 +19,6 @@ const Products = ({ products, onAddToCart }) => {
     <main className={classes.content} >
       <div className={classes.toolbar} />
       <Carousel fade autoPlay>
-        
         <Carousel.Item>
           <img className="d-block w-100" src={logo1} alt=" slide" />
           <Carousel.Caption>

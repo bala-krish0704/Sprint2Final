@@ -22,8 +22,8 @@ function OrderComponent() {
         <div>
             <div style={{paddingRight: "10%"}}>
                 <h1 style={{ paddingTop: "5%", textAlign: 'center', marginTop: "100px"}}>List of Orders</h1>
-                <table class="table table-striped">
-                    <thead class="thead-inverse">
+                <table className="table table-striped">
+                    <thead className="thead-inverse">
                         <tr>
                             <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Order Id</th>
                             <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Book Id</th>
@@ -35,7 +35,7 @@ function OrderComponent() {
                     </thead>
                     <tbody>
                         { orders.map(order =>
-                            <tr key={order.orderid}>
+                            <tr key={order.orderId}>
                                 <td>{order.orderId} </td>
                                 <td>{order.bookId}  </td>
                                 <td>{order.bookName} </td>

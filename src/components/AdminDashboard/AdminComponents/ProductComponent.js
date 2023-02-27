@@ -39,18 +39,19 @@ function ProductComponent() {
                     <tbody>
                         {
                             books.map(
-                                books =>
-                                    <tr key={books.bookid}>
-                                        <td>{books.bookId}</td>
-                                        <td>{books.bookName}</td>
-                                        <td>{books.bookAuthorName}</td>
-                                        <td>{books.bookIsbn}</td>
-                                        <td>{books.bookCategory}</td>
-                                        <td>{books.bookAuthorName}</td>
-                                        <td>{books.bookQuantity}</td>
-                                        <td>{books.bookPrice}</td>
-                                    </tr>
-                            )
+                                book =>
+                                  <tr key={book.bookId}>
+                                    <td>{book.bookId}</td>
+                                    <td>{book.bookName}</td>
+                                    <td>{book.bookAuthorName}</td>
+                                    <td>{book.bookIsbn}</td>
+                                    <td>{book.bookCategory}</td>
+                                    <td>{book.bookAuthorName}</td>
+                                    <td>{book.bookQuantity}</td>
+                                    <td>{book.bookPrice}</td>
+                                  </tr>
+                              )
+                              
                         }
                     </tbody>
                 </table>

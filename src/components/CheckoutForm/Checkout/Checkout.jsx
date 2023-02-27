@@ -19,6 +19,15 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
   const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
   const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
 
+  function logStatus(){
+    let user = localStorage.getItem("user_email");
+    if(user!==null){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   useEffect(() => {
     if (cart.id) {
       const generateToken = async () => {
@@ -73,11 +82,12 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
 
   return (
     <>
+    
       <CssBaseline />
       <div className={classes.toolbar} />
       <main className={classes.layout}>
         <Paper className={classes.paper}>
-          <Typography variant="h4" align="center">Checkout</Typography>
+          <Typography variant="h4" align="center" display='false'>Checkout</Typography>
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((label) => (
               <Step key={label}>

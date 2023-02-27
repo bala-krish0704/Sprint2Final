@@ -4,7 +4,7 @@ import ProductPage from "../AdminDashboard/AdminComponents/ProductPage/ProductPa
 import OrderPage from "../AdminDashboard/AdminComponents/OrderPage/OrderPage";
 import UserPage from "../AdminDashboard/AdminComponents/UserPage/UserPage";
 import SellerPage from "../AdminDashboard/AdminComponents/SellerPage/SellerPage";
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
+import { BrowserRouter as Router, Route } from 'react-router-dom'; 
 
 function AdminDashboard() {
 
