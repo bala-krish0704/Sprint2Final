@@ -18,7 +18,8 @@ const Products = ({ products, onAddToCart }) => {
   return (
     <main className={classes.content} >
       <div className={classes.toolbar} />
-      <Carousel fade infiniteLoop useKeyboardArrows autoPlay>
+      <Carousel fade autoPlay>
+        
         <Carousel.Item>
           <img className="d-block w-100" src={logo1} alt=" slide" />
           <Carousel.Caption>

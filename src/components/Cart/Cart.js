@@ -11,7 +11,7 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
   const handleEmptyCart = () => onEmptyCart();
 
   const renderEmptyCart = () => (
-    <Typography variant="subtitle1">You have no items in your shopping cart,
+    <Typography variant="subtitle1"> {localStorage.getItem('user_name')}, You have no items in your shopping cart,
       <Link className={classes.link} to="/"> start adding some</Link>!
     </Typography>
   );
@@ -40,7 +40,7 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
   return (
     <Container>
       <div className={classes.toolbar} />
-      <Typography className={classes.title} variant="h5" gutterBottom><b>Your Shopping Cart</b></Typography>
+      <Typography className={classes.title} variant="h5" gutterBottom><b>{localStorage.getItem('user_name')} Shopping Cart</b></Typography>
       <hr/>
       { !cart.line_items.length ? renderEmptyCart() : renderCart() }
     </Container>

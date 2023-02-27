@@ -14,7 +14,6 @@ import 'mdbreact/dist/css/mdb.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
-import Sample from './components/sample';
 import ProductPage from './components/AdminDashboard/AdminComponents/ProductPage/ProductPage';
 import OrderPage from './components/AdminDashboard/AdminComponents/OrderPage/OrderPage';
 import UserPage from './components/AdminDashboard/AdminComponents/UserPage/UserPage';
@@ -125,9 +124,6 @@ const App = () => {
 
             <Route path="/product-view/:id" exact>
               <ProductView />
-            </Route>
-            <Route path={"/sample_page"}>
-              <Sample />
             </Route>
             <Route path={'/products'} component={ProductPage} />
             <Route path='/orders' component={OrderPage} />

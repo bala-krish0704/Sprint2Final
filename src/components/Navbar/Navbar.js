@@ -31,7 +31,7 @@ const Navbar = ({ totalItems }) => {
   const [lpassword, lsetPassword] = useState('');
   const [lvalidated, lsetValidated] = useState(false);
 
-  //Login Modal Instances
+  //Admin Login Modal Instances
   const [Ashow, AsetShow] = useState(false);
   const [Aemail, AsetEmail] = useState('');
   const [Apassword, AsetPassword] = useState('');
@@ -49,15 +49,12 @@ const Navbar = ({ totalItems }) => {
   const AhandShow = () => AsetShow(true);
   const AhandClose = () => AsetShow(false)
 
-  //   if (localStorage.getItem('user_email') !== null) {
-  //     alert("User Already Logged In");
-  //     console.log(`user Logged In already`);
-  // } else {
-  //     console.log(`Email address not found`);
-  // }
 
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("admin_id") !== null);
 
+  // boolean dat = 
+  const [BtnVisible, setBtnVisible] = useState(true);
+  
   const handleSubmit = (event) => {
     let reqBody = {};
     event.preventDefault();
@@ -114,7 +111,6 @@ const Navbar = ({ totalItems }) => {
       localStorage.setItem('admin_name', "Admin");
 
       let log = localStorage.getItem('admin_email');
-      // let alog = localStorage.getItem("admin_name");
       // console.log(`Email: ${Aemail}, Password: ${Apassword}`);
       alert(`Logged In As Admin :${log}`);
     }
@@ -227,7 +223,7 @@ const Navbar = ({ totalItems }) => {
             <Modal show={lshow} onHide={loghandClose} className="modal fade mt-5">
 
               <Modal.Header closeButton>
-                <Modal.Title>Sign-In Here</Modal.Title>
+                <Modal.Title>Sign-In</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <Form noValidate validated={lvalidated} onSubmit={loghandleSubmit}>
@@ -261,8 +257,8 @@ const Navbar = ({ totalItems }) => {
                     </Form.Control.Feedback>
                   </Form.Group>
 
-                  <Button className='btn btn-info shadow btn-sm' color="secondary" type="submit">
-                    Login
+                  <Button className='btn btn-info shadow btn-sm' color="secondary" type="submit" onClick={loghandClose}>
+                    <a href='/'>Login</a>
                   </Button>
                 </Form>
               </Modal.Body>
@@ -282,33 +278,35 @@ const Navbar = ({ totalItems }) => {
               </IconButton>
             </div>
           )}
-           {isLoggedIn && (
-          <DropdownButton
+          
+          {location.pathname === '/cart' &&(<DropdownButton
             variant="contained"
             title={<AccountCircle fontSize="large" />}
             className={classes.dropdown}
             color="inherit"
           >
-            <Dropdown.Item as={Link} to="/profile" style={{ fontSize: "1.5em" }}><AccountCircleSharp /> My Profile</Dropdown.Item>
-            <Dropdown.Item as={Link} to="/dashboard" style={{ fontSize: "1.5em", marginBottom: '5px' }}><Dashboard /> My Dashboard</Dropdown.Item>
+            {/* <Dropdown.Item as={Link} to="/profile" style={{ fontSize: "1.5em" }}><AccountCircleSharp /> My Profile</Dropdown.Item> */}
+            <Dropdown.Item as={Link} to="/products"  style={{ fontSize: "1.5em", marginBottom: '5px' }}><Dashboard /> My Dashboard</Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item onClick={handleLogout} style={{ fontSize: "1.5em" }}><ExitToApp fontSize="medium" />  Logout</Dropdown.Item>
+            <Dropdown.Item onClick={handleLogout} style={{ fontSize: "1.5em" }} ><ExitToApp fontSize="medium" />Logout</Dropdown.Item>
           </DropdownButton>
-           )}
+          )}
 
-          <Button
+          {location.pathname === '/' && (<Button
             className="btn btn-outline-light text-dark btn-md ml-auto"
             variant="primary"
             onClick={reghandleShow}>
             Sign-Up
           </Button>
-          <Button
+          )}
+          {location.pathname === '/' && (<Button
             className="btn btn-outline-light text-dark btn-md ml-auto"
             variant="primary"
             onClick={AhandShow}
             >
             Admin
           </Button>
+          )}
           <div className={classes.Modal}>
             <Modal show={Ashow} onHide={AhandClose} className="modal fade mt-5">
 
@@ -347,7 +345,7 @@ const Navbar = ({ totalItems }) => {
                     </Form.Control.Feedback>
                   </Form.Group>
 
-                  <Button className='btn btn-danger shadow btn-md btn-block' color="secondary" type="submit">
+                  <Button className='btn btn-danger shadow btn-md btn-block' color="secondary" type="submit" as={Link} to="/products" onClick={AhandClose}>
                     Login as Admin
                   </Button>
                 </Form>

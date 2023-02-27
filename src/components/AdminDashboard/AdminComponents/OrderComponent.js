@@ -27,6 +27,7 @@ function OrderComponent() {
                         <tr>
                             <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Order Id</th>
                             <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Book Id</th>
+                            <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Book Name</th>
                             <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Quantity</th>
                             <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Total Cost</th>
                             <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Reader Id</th>
@@ -37,8 +38,9 @@ function OrderComponent() {
                             <tr key={order.orderid}>
                                 <td>{order.orderId} </td>
                                 <td>{order.bookId}  </td>
+                                <td>{order.bookName} </td>
                                 <td>{order.quantity} </td>
-                                <td>{order.totalcost}</td>
+                                <td>{order.totalCost}</td>
                                 <td>{order.readerId} </td>
                             </tr>
                         )}
