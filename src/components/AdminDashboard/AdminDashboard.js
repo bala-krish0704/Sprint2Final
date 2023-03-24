@@ -16,6 +16,7 @@ function AdminDashboard() {
                     <Route path='/orders' element={<OrderPage />} />
                     <Route path='/users' element={<UserPage />} />
                     <Route path='/seller' element={<SellerPage />} />
+                    
 
             </Router>
         </>

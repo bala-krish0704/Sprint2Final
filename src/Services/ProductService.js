@@ -1,20 +1,20 @@
 import axios from "axios";
-const PRODUCT_API_BASE_URL = 'http://localhost:8080/api/v1/book';
+const BOOKS_API_BASE_URL = 'http://localhost:8080/api/v1/book';
 
 class ProductService {
 
     //methods to get all products from backend using above URL
     //http://localhost:8080/product/listproducts
     getProducts(){
-        return axios.get(PRODUCT_API_BASE_URL+'/getbooks');
+        return axios.get(BOOKS_API_BASE_URL+'/getbooks');
     }
-    createProduct(product){
+    createProduct(book){
         alert("product added")
-        return axios.post(PRODUCT_API_BASE_URL+'/saveproducts',product);
+        return axios.post(BOOKS_API_BASE_URL+'/savebook',book);
     }
 
     getProductById(productid){
-        return axios.get(PRODUCT_API_BASE_URL+'/getproducts/'+productid);
+        return axios.get(BOOKS_API_BASE_URL+'/getproducts/'+productid);
     }
         
 }

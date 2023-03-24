@@ -26,7 +26,7 @@
     "react-responsive-carousel": "^3.2.18",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
+    "react-scripts": "^5.0.1",
     "react-stripe-elements": "^6.1.2",
     "semantic-ui-react": "^2.0.1",
     "yup": "^1.0.0"

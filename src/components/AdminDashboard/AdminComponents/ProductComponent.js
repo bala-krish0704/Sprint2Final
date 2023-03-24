@@ -21,37 +21,35 @@ function ProductComponent() {
 
     return (
         <div>
-            <div style={{paddingRight: "10%"}}>
-                <h1 style={{ paddingTop: "5%", textAlign: 'center', marginTop: "100px"}}>List of Books</h1>
+            <div style={{ paddingRight: "10%" }}>
+                <h1 style={{ paddingTop: "5%", textAlign: 'center', marginTop: "100px" }}>List of Books</h1>
                 <table className="table table-striped" >
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
-                            <th scope="col" className="col-sm-4" style={{textOverflow: "ellipsis"}}>Book Name</th>
-                            <th scope="col" className="col-sm-4" style={{textOverflow: "ellipsis"}}>Author Name</th>
-                            <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>ISBN Number</th>
-                            <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Category</th> 
-                            <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Author</th>
-                            <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>Quantity </th>
-                            <th scope="col" className="col-sm-3" style={{textOverflow: "ellipsis"}}>price</th>
+                            <th scope="col" className="col-sm-4" style={{ textOverflow: "ellipsis" }}>Book Name</th>
+                            <th scope="col" className="col-sm-4" style={{ textOverflow: "ellipsis" }}>Author Name</th>
+                            <th scope="col" className="col-sm-3" style={{ textOverflow: "ellipsis" }}>ISBN Number</th>
+                            <th scope="col" className="col-sm-3" style={{ textOverflow: "ellipsis" }}>Category</th>
+                            <th scope="col" className="col-sm-3" style={{ textOverflow: "ellipsis" }}>Quantity </th>
+                            <th scope="col" className="col-sm-3" style={{ textOverflow: "ellipsis" }}>price</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             books.map(
                                 book =>
-                                  <tr key={book.bookId}>
-                                    <td>{book.bookId}</td>
-                                    <td>{book.bookName}</td>
-                                    <td>{book.bookAuthorName}</td>
-                                    <td>{book.bookIsbn}</td>
-                                    <td>{book.bookCategory}</td>
-                                    <td>{book.bookAuthorName}</td>
-                                    <td>{book.bookQuantity}</td>
-                                    <td>{book.bookPrice}</td>
-                                  </tr>
-                              )
-                              
+                                    <tr key={book.bookId}>
+                                        <td>{book.bookId}</td>
+                                        <td>{book.bookName}</td>
+                                        <td>{book.bookAuthorName}</td>
+                                        <td>{book.bookIsbn}</td>
+                                        <td>{book.bookCategory}</td>
+                                        <td>{book.bookQuantity}</td>
+                                        <td>{book.bookPrice}</td>
+                                    </tr>
+                            )
+
                         }
                     </tbody>
                 </table>
